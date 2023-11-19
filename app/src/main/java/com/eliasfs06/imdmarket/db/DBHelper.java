@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.eliasfs06.imdmarket.model.Produto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBHelper extends SQLiteOpenHelper {
     private static DBHelper dbHelperInstance;
     private static final int DATABASE_VERSION = 1;
@@ -68,6 +71,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.close();
         return produto;
+    }
+
+    public List<Produto> getAllProdutos() {
+        List<Produto> produtosList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_PRODUTOS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String codigo = cursor.getString(cursor.getColumnIndex(KEY_CODIGO));
+                String nome = cursor.getString(cursor.getColumnIndex(KEY_NOME));
+                String descricao = cursor.getString(cursor.getColumnIndex(KEY_DESCRICAO));
+                int estoque = cursor.getInt(cursor.getColumnIndex(KEY_ESTOQUE));
+
+                Produto produto = new Produto(codigo, nome, descricao, estoque);
+                produtosList.add(produto);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return produtosList;
     }
 
 }

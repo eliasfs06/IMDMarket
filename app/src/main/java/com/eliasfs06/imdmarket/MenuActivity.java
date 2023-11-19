@@ -17,16 +17,30 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Button btnCadastraProduto = findViewById(R.id.cadastrarProdButton);
+        Button btnListarProdutos = findViewById(R.id.listarProdButton);
         btnCadastraProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 irParaCadastrarActivity();
             }
         });
+
+        btnListarProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irParaListarActivity();
+            }
+        });
     }
 
     private void irParaCadastrarActivity() {
         Intent intent = new Intent(MenuActivity.this, CadastroProdutoActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void irParaListarActivity() {
+        Intent intent = new Intent(MenuActivity.this, ListaProdutosActivity.class);
         startActivity(intent);
         finish();
     }

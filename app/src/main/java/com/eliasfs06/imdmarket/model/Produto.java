@@ -48,4 +48,8 @@ public class Produto {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
+
+    public String formatarParaList() {
+        return this.codigo + " - " + this.nome;
+    }
 }

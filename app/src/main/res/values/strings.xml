@@ -14,5 +14,6 @@
     <string name="estoque_prod">Estoque:</string>
     <string name="salvar_btn">Salvar</string>
     <string name="limpar_btn">Limpar</string>
+    <string name="voltar_btn">Voltar</string>
 
 </resources>

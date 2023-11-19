@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/nomeView"
@@ -93,7 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text" />
+            android:inputType="number" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -123,6 +124,15 @@
             android:layout_weight="1"
             android:background="#673AB7"
             android:text="@string/limpar_btn" />
+
+        <Button
+            android:id="@+id/voltarBtnCadastro"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#673AB7"
+            android:text="@string/voltar_btn" />
 
     </LinearLayout>
 
