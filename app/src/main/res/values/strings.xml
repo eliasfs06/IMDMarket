@@ -15,5 +15,6 @@
     <string name="salvar_btn">Salvar</string>
     <string name="limpar_btn">Limpar</string>
     <string name="voltar_btn">Voltar</string>
+    <string name="deletar_btn">Excluir</string>
 
 </resources>

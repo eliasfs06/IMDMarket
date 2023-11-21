@@ -19,7 +19,7 @@ public class MenuActivity extends AppCompatActivity {
         Button btnCadastraProduto = findViewById(R.id.cadastrarProdButton);
         Button btnListarProdutos = findViewById(R.id.listarProdButton);
         Button btnAlterarProdutos = findViewById(R.id.alterarProdButton);
-
+        Button btnDeletarProdutos = findViewById(R.id.deletarProdButton);
         btnCadastraProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +40,13 @@ public class MenuActivity extends AppCompatActivity {
                 irParaAlterarActivity();
             }
         });
+
+        btnDeletarProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irParaDeletarActivity();
+            }
+        });
     }
 
     private void irParaCadastrarActivity() {
@@ -56,6 +63,12 @@ public class MenuActivity extends AppCompatActivity {
 
     private void irParaAlterarActivity() {
         Intent intent = new Intent(MenuActivity.this, EditarProdutoActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void irParaDeletarActivity() {
+        Intent intent = new Intent(MenuActivity.this, DeletaProdutoActivity.class);
         startActivity(intent);
         finish();
     }
