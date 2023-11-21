@@ -59,13 +59,31 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void updateProduto(Produto produto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_NOME, produto.getNome());
+        values.put(KEY_DESCRICAO, produto.getDescricao());
+        values.put(KEY_ESTOQUE, produto.getEstoque());
+
+        db.update(TABLE_PRODUTOS, values, KEY_CODIGO + " = ?", new String[]{String.valueOf(produto.getCodigo())});
+        db.close();
+    }
+
+
     public Produto getProduto(String codigo) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_PRODUTOS, new String[]{KEY_CODIGO, KEY_NOME, KEY_DESCRICAO, KEY_ESTOQUE},
                 KEY_CODIGO + "=?", new String[]{codigo}, null, null, null, null);
-        if (cursor != null)
+        if (cursor != null){
             cursor.moveToFirst();
+        }
+
+        if(cursor.getCount() == 0){
+            return null;
+        }
 
         Produto produto = new Produto(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
 

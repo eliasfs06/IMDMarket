@@ -18,6 +18,8 @@ public class MenuActivity extends AppCompatActivity {
 
         Button btnCadastraProduto = findViewById(R.id.cadastrarProdButton);
         Button btnListarProdutos = findViewById(R.id.listarProdButton);
+        Button btnAlterarProdutos = findViewById(R.id.alterarProdButton);
+
         btnCadastraProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,6 +33,13 @@ public class MenuActivity extends AppCompatActivity {
                 irParaListarActivity();
             }
         });
+
+        btnAlterarProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                irParaAlterarActivity();
+            }
+        });
     }
 
     private void irParaCadastrarActivity() {
@@ -41,6 +50,12 @@ public class MenuActivity extends AppCompatActivity {
 
     private void irParaListarActivity() {
         Intent intent = new Intent(MenuActivity.this, ListaProdutosActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void irParaAlterarActivity() {
+        Intent intent = new Intent(MenuActivity.this, EditarProdutoActivity.class);
         startActivity(intent);
         finish();
     }
